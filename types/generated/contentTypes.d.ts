@@ -362,6 +362,99 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiProjectProject extends Schema.CollectionType {
+  collectionName: 'projects';
+  info: {
+    singularName: 'project';
+    pluralName: 'projects';
+    displayName: 'project';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    property: Attribute.String & Attribute.Required & Attribute.Unique;
+    type: Attribute.Enumeration<['apartment', 'villa', 'independent house']>;
+    propertyid: Attribute.UID<'api::project.project', 'property'> &
+      Attribute.Required;
+    icon: Attribute.Media;
+    location: Attribute.String & Attribute.Required;
+    homes: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 2000;
+        },
+        number
+      >;
+    composters: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    shredder: Attribute.Integer;
+    installed: Attribute.Date;
+    city: Attribute.Enumeration<
+      [
+        'bangalore',
+        'pune',
+        'chennai',
+        'hyderabad',
+        'mumbai',
+        'ncr',
+        'mysore',
+        'other'
+      ]
+    > &
+      Attribute.Required;
+    builder: Attribute.Enumeration<
+      [
+        'Alpine Developers',
+        'Brick and Land Constructions',
+        'Bricks and Milestones',
+        'Celebrity Structures India',
+        'Century Developers',
+        'Fortius Infra',
+        'Foyer Group',
+        'Icon Developers & Promoters',
+        'Ittina Developers',
+        'Mahendara',
+        'Mantri Developers',
+        'Platinum',
+        'Poorvi',
+        'Prestige Developers',
+        'R',
+        'RIFCO',
+        'Sraddha Developers',
+        'Sri Vandana Developers',
+        'Sterling Developers',
+        'Sumadhura Developers',
+        'United developers'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -798,6 +891,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::project.project': ApiProjectProject;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

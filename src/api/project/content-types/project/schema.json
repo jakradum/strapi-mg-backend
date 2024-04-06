@@ -1,0 +1,103 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "property": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "apartment",
+        "villa",
+        "independent house"
+      ]
+    },
+    "propertyid": {
+      "type": "uid",
+      "required": true,
+      "targetField": "property"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "homes": {
+      "type": "integer",
+      "required": true,
+      "max": 2000,
+      "min": 1
+    },
+    "composters": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "shredder": {
+      "type": "integer"
+    },
+    "installed": {
+      "type": "date"
+    },
+    "city": {
+      "type": "enumeration",
+      "enum": [
+        "bangalore",
+        "pune",
+        "chennai",
+        "hyderabad",
+        "mumbai",
+        "ncr",
+        "mysore",
+        "other"
+      ],
+      "required": true
+    },
+    "builder": {
+      "type": "enumeration",
+      "enum": [
+        "Alpine Developers",
+        "Brick and Land Constructions",
+        "Bricks and Milestones",
+        "Celebrity Structures India",
+        "Century Developers",
+        "Fortius Infra",
+        "Foyer Group",
+        "Icon Developers & Promoters",
+        "Ittina Developers",
+        "Mahendara",
+        "Mantri Developers",
+        "Platinum",
+        "Poorvi",
+        "Prestige Developers",
+        "R",
+        "RIFCO",
+        "Sraddha Developers",
+        "Sri Vandana Developers",
+        "Sterling Developers",
+        "Sumadhura Developers",
+        "United developers"
+      ]
+    }
+  }
+}
