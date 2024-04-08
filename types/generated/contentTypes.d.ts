@@ -437,6 +437,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
         'United developers'
       ]
     >;
+    KPD: Attribute.Decimal;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

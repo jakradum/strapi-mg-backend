@@ -98,6 +98,9 @@
         "Sumadhura Developers",
         "United developers"
       ]
+    },
+    "KPD": {
+      "type": "decimal"
     }
   }
 }
